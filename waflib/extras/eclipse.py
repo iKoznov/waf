@@ -210,10 +210,15 @@ class eclipse(Build.BuildContext):
 					self.add(doc, option, 'listOptionValue',
 								{'builtIn': 'false',
 								'value': '"%s"'%(i)})
-			if tool_name == "GNU C++" or tool_name == "GNU C":
-				self.add(doc,tool,'inputType',{ 'id':'org.eclipse.cdt.build.core.settings.holder.inType.1', \
-					'languageId':'org.eclipse.cdt.core.gcc','languageName':tool_name, \
-					'sourceContentType':'org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader', \
+			if tool_name == "GNU C":
+				self.add(doc,tool,'inputType',{ 'id':'org.eclipse.cdt.build.core.settings.holder.inType.1',
+					'languageId':'org.eclipse.cdt.core.gcc','languageName':tool_name,
+					'sourceContentType':'org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader',
+					'superClass':'org.eclipse.cdt.build.core.settings.holder.inType' })
+			if tool_name == "GNU C++":
+				self.add(doc,tool,'inputType',{ 'id':'org.eclipse.cdt.build.core.settings.holder.inType.1',
+					'languageId':'org.eclipse.cdt.core.g++','languageName':tool_name,
+					'sourceContentType':'org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader',
 					'superClass':'org.eclipse.cdt.build.core.settings.holder.inType' })
 		if source_dirs:
 			sourceEntries = self.add(doc, config, 'sourceEntries')
